@@ -1,11 +1,19 @@
 import styles from "./signin.module.css";
 import Link from "next/link";
+import { auth, signIn } from "@/lib/auth";
+import { redirect } from "next/navigation";
 
-export default function Register() {
+const SignIn = async () => {
+  const session = await auth();
+  if (session) redirect("/");
+
   return (
     <div className={styles.pageContainer}>
       <h1>Code Garden</h1>
-      <form className={styles.signinForm}>
+      <form className={styles.signinForm} action={async (formData) => {
+        'use server';
+        await signIn("credentials", formData);
+      }}>
         <div className={styles.formRow}>
           <label for="email">Email:</label>
           <input type="email" name="email" className={styles.formInput} />
@@ -19,11 +27,12 @@ export default function Register() {
         </button>
         <span className={styles.signup}>
           Need an account?{" "}
-          <Link className={styles.signupLink}  href="/register">
+          <Link className={styles.signupLink} href="/register">
             Sign Up
           </Link>
         </span>
       </form>
     </div>
   );
-}
+};
+export default SignIn;
