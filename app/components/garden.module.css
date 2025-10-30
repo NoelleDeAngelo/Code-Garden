@@ -1,0 +1,17 @@
+.card{
+  width: 55vw;
+  height: fit-content;
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  margin-right: 5vw;
+  margin-left: 3vw;
+  text-align: center;
+  padding: 20px;
+  border-radius: 0.75rem;
+  position: relative;
+}
+
+.backgroundImg{
+  width: 100%;
+  height: auto;
+}

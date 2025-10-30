@@ -22,7 +22,6 @@
   margin: 0 auto;
   padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 5px;
   background-color: var(--color-foreground);
   border-radius: 0.75rem;
   box-shadow: var(--shadow-card);

@@ -1,5 +1,6 @@
 "use client"
 import { signOut } from "next-auth/react";
+import styles from "./signOut.module.css";
 
 const SignOut = () => {
 
@@ -7,7 +8,9 @@ const SignOut = () => {
     await signOut();
   }
 
-  return <button onClick={handleSignOut}>SignOut</button>
+  return <button className={styles.button}
+    onClick={handleSignOut}
+  >Sign Out</button>
 }
 
 export default SignOut;

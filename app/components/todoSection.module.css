@@ -1,0 +1,11 @@
+
+.card{
+  height: 70vh;
+  width: 400px;
+  background-color: var(--color-card);
+  box-shadow: var(--shadow-card);
+  margin-left: 5vw;
+  margin-top: 50px;
+  text-align: center;
+  border-radius: 0.75rem;
+}
