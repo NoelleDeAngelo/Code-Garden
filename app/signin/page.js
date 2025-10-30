@@ -12,7 +12,11 @@ const SignIn = async () => {
       <h1>Code Garden</h1>
       <form className={styles.signinForm} action={async (formData) => {
         'use server';
-        await signIn("credentials", formData);
+        try {
+          await signIn("credentials", formData);
+        } catch (error) {
+          return {error: "Invalid credentials"}
+        }
       }}>
         <div className={styles.formRow}>
           <label for="email">Email:</label>
