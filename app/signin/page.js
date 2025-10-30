@@ -2,6 +2,7 @@ import styles from "./signin.module.css";
 import Link from "next/link";
 import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
+import { isRedirectError } from "next/dist/client/components/redirect-error";
 
 const SignIn = async () => {
   const session = await auth();
@@ -10,20 +11,28 @@ const SignIn = async () => {
   return (
     <div className={styles.pageContainer}>
       <h1>Code Garden</h1>
-      <form className={styles.signinForm} action={async (formData) => {
-        'use server';
-        try {
-          await signIn("credentials", formData);
-        } catch (error) {
-          return {error: "Invalid credentials"}
-        }
-      }}>
+      <form
+        className={styles.signinForm}
+        action={async (formData) => {
+          "use server";
+          try {
+            await signIn("credentials", formData, { redirectTo: "/" });
+          } catch (error) {
+            if (isRedirectError(error)) {
+              throw error;
+            } else {
+              //todo:handle error on client
+              throw new Error('Invalid Credentials')
+            }
+          }
+        }}
+      >
         <div className={styles.formRow}>
-          <label for="email">Email:</label>
+          <label htmlFor="email">Email:</label>
           <input type="email" name="email" className={styles.formInput} />
         </div>
         <div className={styles.formRow}>
-          <label for="password">Password:</label>
+          <label htmlFor="password">Password:</label>
           <input type="password" name="password" className={styles.formInput} />
         </div>
         <button type="submit" className={styles.button}>
