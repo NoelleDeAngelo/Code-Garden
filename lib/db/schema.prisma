@@ -12,24 +12,28 @@ model user {
   name  String
   email String  @unique
   password String
+  debtTask debtTask[]
+  learningTask learningTask[]
 }
 
 model debtTask{
   id Int @id @default(autoincrement())
   title String
   description String
-  is_completed Boolean
-  created_at DateTime
-  completed_at DateTime
-  user_id String
+  isCompleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  completedAt DateTime?
+  userId String
+  user user @relation(fields: [userId], references: [id])
 }
 
-model learingTask{
+model learningTask{
   id Int @id @default(autoincrement())
   title String
   description String
-  is_completed Boolean
-  created_at DateTime
-  completed_at DateTime
-  user_id String
+  isCompleted Boolean @default(false)
+  createdAt DateTime @default(now())
+  completedAt DateTime?
+  userId String
+  user user @relation(fields: [userId], references: [id])
 }
