@@ -1,10 +1,12 @@
 
 import styles from "./todoSection.module.css";
+import Todo from "@/app/components/Todo";
 
-const ToDoSection=()=>{
+
+const ToDoSection = ({ todos }) => {
   return (
     <div className={styles.card}>
-      <p>this is the todo list</p>
+      {todos.map(todo => { return <Todo key={ todo.id} todo={todo } />})}
     </div>
   )
 }

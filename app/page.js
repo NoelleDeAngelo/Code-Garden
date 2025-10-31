@@ -5,6 +5,7 @@ import TodoSection from "@/app/components/TodoSection";
 import Garden from "@/app/components/Garden";
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
+import { db } from "@/lib/db";
 
 
 
@@ -12,6 +13,14 @@ const Home= async ()=> {
   const session = await auth();
   if (!session) redirect("/signin")
 
+    const getTodos = async () => {
+      const user = await db.user.findFirst({
+        where: { email: session.user.email },
+        include: { learningTask: true },
+      });
+      return user.learningTask;
+    };
+  var todos = await getTodos()
   return (
     <div className={styles.page}>
       <header className={styles.header}>
@@ -22,7 +31,7 @@ const Home= async ()=> {
         <SignOut />
       </header>
       <main className={styles.main}>
-        <TodoSection />
+        <TodoSection todos={todos} />
         <Garden/>
       </main>
     </div>
