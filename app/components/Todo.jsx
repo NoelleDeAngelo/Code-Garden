@@ -1,11 +1,11 @@
+"use client";
 
-
-const Todo = ({ todo }) => {
+const Todo = ({ task }) => {
   return (
-    <dev>
-      <p>{ todo.title}</p>
-      <p>{ todo.description}</p>
-    </dev>
+    <div>
+      <p>{ task.getTitle()}</p>
+      <p>{ task.getDescription()}</p>
+    </div>
   );
 }
 
