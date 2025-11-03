@@ -15,10 +15,10 @@ const Home = async () => {
   if (!session) redirect("/signin")
 
   const user = await db.user.findFirst({
-      where: { email: session.user.email },
-      include: { learningTask: true, debtTask:true },
-    });
-  var todos= {learning: user.learningTask, debt: user.debtTask}
+    where: { email: session.user.email },
+    include: { learningTask: true, debtTask: true },
+  });
+  var tasks= {learning: user.learningTask, debt: user.debtTask}
 
 
   return (
@@ -31,7 +31,7 @@ const Home = async () => {
         <SignOut />
       </header>
       <main className={styles.main}>
-        <TodoSection todos={todos} />
+        <TodoSection tasks={tasks} userId={user.id} />
         <Garden/>
       </main>
     </div>

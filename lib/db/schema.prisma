@@ -19,7 +19,7 @@ model user {
 model debtTask{
   id Int @id @default(autoincrement())
   title String
-  description String
+  description String?
   isCompleted Boolean @default(false)
   createdAt DateTime @default(now())
   completedAt DateTime?
@@ -30,7 +30,7 @@ model debtTask{
 model learningTask{
   id Int @id @default(autoincrement())
   title String
-  description String
+  description String?
   isCompleted Boolean @default(false)
   createdAt DateTime @default(now())
   completedAt DateTime?

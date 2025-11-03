@@ -3,8 +3,8 @@
 const Todo = ({ task }) => {
   return (
     <div>
-      <p>{ task.getTitle()}</p>
-      <p>{ task.getDescription()}</p>
+      <p>{ task.title}</p>
+      <p>{ task.description}</p>
     </div>
   );
 }

@@ -3,39 +3,55 @@
 import styles from "./todoSection.module.css";
 import Todo from "@/app/components/Todo";
 import AddTaskForm from "@/app/components/AddTaskForm";
-import { DebtTask, LearningTask } from "@/lib/tasks"
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 
 
-const ToDoSection = ({ todos }) => {
+const ToDoSection = ({ tasks, userId }) => {
 
   const [showAddTaskForm, setShowAddTaskForm] = useState(false);
+  const [taskType, setTaskType]=useState(null)
+
+
+  function closeForm() {
+    setShowAddTaskForm(false);
+    setTaskType(null);
+  }
 
 
   return (
     <div className={styles.card}>
       <section>
         <h2>Tech Debt</h2>
-        <button onClick={() => setShowAddTaskForm(true)}>Add</button>
-        {todos.debt.map((todo) => {
-          var task = new DebtTask(todo.title, todo.description, todo.userId);
-          return <Todo key={todo.id} task={task} />;
+        <button
+          onClick={() => {
+            setTaskType('debt');
+            setShowAddTaskForm(true);
+          }}
+        >
+          Add
+        </button>
+        {tasks.debt.map((todo) => {
+          return <Todo key={todo.id} task={todo} />;
         })}
       </section>
 
       <section>
         <h2>Learning Tasks</h2>
-        <button onClick={() => setShowAddTaskForm(true)}>Add</button>
-        {todos.learning.map((todo) => {
-          var task = new LearningTask(
-            todo.title,
-            todo.description,
-            todo.userId
-          );
-          return <Todo key={todo.id} task={task} />;
+        <button
+          onClick={() => {
+            setTaskType("learning");
+            setShowAddTaskForm(true);
+          }}
+        >
+          Add
+        </button>
+        {tasks.learning.map((todo) => {
+          return <Todo key={todo.id} task={todo} />;
         })}
       </section>
-      {showAddTaskForm && <AddTaskForm close={()=>setShowAddTaskForm(false)} />}
+      {showAddTaskForm && (
+        <AddTaskForm type={taskType} userId={ userId} close={closeForm}  />
+      )}
     </div>
   );
 }
