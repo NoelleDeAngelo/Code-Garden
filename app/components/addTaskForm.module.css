@@ -1,0 +1,73 @@
+
+.blurBg{
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card{
+  height: auto;
+  width: 400px;
+  background-color: var(--color-foreground);
+  box-shadow: var(--shadow-card);
+  border-radius: 0.75rem;
+  border: 1px solid #ccc;
+  display: flex;
+  flex-direction: column;
+}
+.close{
+align-self: flex-end;
+padding: 7px;
+font-size: 1.3rem;
+font-weight: 700;
+cursor: pointer;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  padding:0 30px 30;
+  gap: 10px;
+}
+.formRow{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.formInput {
+  background-color: var(--color-form-input);
+  border-radius: 5px;
+  height: 40px;
+  border: 1px solid #ccc;
+  width: 100%;
+  padding: 7px;
+}
+.label{
+  font-weight: 300;
+}
+.taskName{
+  font-size: 1.8rem;
+}
+.textarea{
+  min-height:150px;
+  resize: none;
+}
+
+.button{
+  background-color: var(--color-button);
+  border-radius: 5px;
+  height: 30px;
+  border: 1px solid #ccc;
+  margin-top:5px;
+  font-size: 1.2rem;
+  color: #F5EFE0;
+  cursor: pointer;
+}
