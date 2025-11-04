@@ -1,0 +1,29 @@
+
+
+.todoContainer{
+  height: auto;
+  width: 100%;
+  background-color: white;
+  border-radius: 0.25rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 10px 20px;
+  box-shadow:
+  0 0 0 1px rgba(224, 222, 216, 0.9),
+  0 2px 4px rgba(11, 49, 66, 0.05);
+}
+
+.todoContainer:hover{
+    transform: scale(1.01);
+  }
+
+  .info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .todoTitle{
+    font-size: 1.2rem;
+  }

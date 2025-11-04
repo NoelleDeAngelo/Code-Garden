@@ -18,13 +18,3 @@ export async function saveLearningTask(formData) {
   const task = new LearningTask(title, description, userId);
   await task.save();
 }
-
-export async function createDebtTask(params) {
-  const task = new DebtTask(title, description, userId);
-  return task
-}
-
-export async function createLearningTask(params) {
-  const task = new LearningTask(title, description, userId);
-  return task
-}

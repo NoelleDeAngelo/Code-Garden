@@ -18,7 +18,9 @@ const Home = async () => {
     where: { email: session.user.email },
     include: { learningTask: true, debtTask: true },
   });
-  var tasks= {learning: user.learningTask, debt: user.debtTask}
+  var tasks={learning:[], debt:[]}
+  user.learningTask ? tasks.learning = user.learningTask : null
+  user.debtTask ? tasks.debt=user.debtTask : null
 
 
   return (

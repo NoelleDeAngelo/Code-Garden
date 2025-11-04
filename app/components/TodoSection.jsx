@@ -20,22 +20,25 @@ const ToDoSection = ({ tasks, userId }) => {
 
   return (
     <div className={styles.card}>
-      <section>
+      <section className={styles.sectionContainer}>
         <h2>Tech Debt</h2>
         <button
           onClick={() => {
-            setTaskType('debt');
+            setTaskType("debt");
             setShowAddTaskForm(true);
           }}
         >
           Add
         </button>
-        {tasks.debt.map((todo) => {
+        <ul>
+          {tasks.debt.map((todo) => {
           return <Todo key={todo.id} task={todo} />;
         })}
+        </ul>
+
       </section>
 
-      <section>
+      <section className={styles.sectionContainer}>
         <h2>Learning Tasks</h2>
         <button
           onClick={() => {
@@ -45,12 +48,15 @@ const ToDoSection = ({ tasks, userId }) => {
         >
           Add
         </button>
-        {tasks.learning.map((todo) => {
+        <ul>
+          {tasks.learning.map((todo) => {
           return <Todo key={todo.id} task={todo} />;
         })}
+        </ul>
+
       </section>
       {showAddTaskForm && (
-        <AddTaskForm type={taskType} userId={ userId} close={closeForm}  />
+        <AddTaskForm type={taskType} userId={userId} close={closeForm} />
       )}
     </div>
   );
