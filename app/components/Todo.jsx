@@ -20,7 +20,10 @@ const Todo = ({ task , type}) => {
   }
   return (
     <li className={styles.todoContainer}>
-      {isDone ? (
+
+
+        <div className={styles.todoHeadingContainer}>
+                {isDone ? (
         <MdCheckBox onClick={handleCheckBox} className={styles.checkbox} />
       ) : (
         <MdCheckBoxOutlineBlank
@@ -28,11 +31,13 @@ const Todo = ({ task , type}) => {
           className={styles.checkbox}
         />
       )}
-      <div className={styles.info}>
-        <h3 className={styles.todoTitle}>{task.title}</h3>
-        <p>{task.description}</p>
-      </div>
-      <MdDeleteForever className={styles.trash} />
+          <h3 className={styles.todoTitle}>{task.title}</h3>
+          <MdDeleteForever className={styles.trash} />
+        </div>
+
+        <p className={styles.description}>{task.description}</p>
+
+
     </li>
   );
 }
