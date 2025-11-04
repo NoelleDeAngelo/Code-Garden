@@ -18,11 +18,12 @@ const Todo = ({ task, type }) => {
   function handleCheckBox() {
     updateIsCompleted(type, task.id, isDone);
     setIsDone((prev) => !prev);
+    router.push("/");
   }
 
   function handleDelete() {
     deleteTask(type, task.id);
-    router.push('/')
+    router.push('/');
   }
 
 

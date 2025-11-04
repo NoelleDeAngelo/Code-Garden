@@ -34,7 +34,7 @@ const Home = async () => {
       </header>
       <main className={styles.main}>
         <TodoSection tasks={tasks} userId={user.id} />
-        <Garden/>
+        <Garden tasks={tasks}/>
       </main>
     </div>
   );
