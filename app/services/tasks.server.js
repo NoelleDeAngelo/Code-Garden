@@ -24,3 +24,9 @@ export async function updateIsCompleted(type, id, wasPrevCompleted) {
     ? await LearningTask.setIsCompleted(id, wasPrevCompleted)
     : await DebtTask.setIsCompleted(id, wasPrevCompleted);
 }
+
+export async function deleteTask(type, id) {
+  type === "learning"
+    ? await LearningTask.deleteTask(id)
+    : await DebtTask.deleteTask(id);
+}

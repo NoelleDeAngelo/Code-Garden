@@ -6,18 +6,26 @@ import {
   MdDeleteForever,
 } from "react-icons/md";
 import { useState } from 'react'
-import { updateIsCompleted} from "@/app/services/tasks.server.js";
+import { updateIsCompleted, deleteTask } from "@/app/services/tasks.server.js";
+import { useRouter } from "next/navigation";
 
 
-const Todo = ({ task , type}) => {
+const Todo = ({ task, type }) => {
+  const router=useRouter()
 
   const [isDone, setIsDone] = useState(task.isCompleted);
 
   function handleCheckBox() {
     updateIsCompleted(type, task.id, isDone);
     setIsDone((prev) => !prev);
-
   }
+
+  function handleDelete() {
+    deleteTask(type, task.id);
+    router.push('/')
+  }
+
+
   return (
     <li className={styles.todoContainer}>
 
@@ -32,7 +40,7 @@ const Todo = ({ task , type}) => {
         />
       )}
           <h3 className={styles.todoTitle}>{task.title}</h3>
-          <MdDeleteForever className={styles.trash} />
+        <MdDeleteForever onClick={ handleDelete} className={styles.trash} />
         </div>
 
         <p className={styles.description}>{task.description}</p>

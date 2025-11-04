@@ -47,6 +47,9 @@
   font-size: 1.6rem;
   flex-shrink: 0;
 }
+.trash:active{
+  transform: scale(.8);
+}
 
 .description{
   margin-left: 10%;
