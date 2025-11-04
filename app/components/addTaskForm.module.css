@@ -25,14 +25,13 @@
 .close{
 align-self: flex-end;
 padding: 7px;
-font-size: 1.3rem;
-font-weight: 700;
+font-size: 2.4rem;
 cursor: pointer;
 }
 .form {
   display: flex;
   flex-direction: column;
-  padding:0 30px 30;
+  padding:5px 30px 30px;
   gap: 10px;
 }
 .formRow{

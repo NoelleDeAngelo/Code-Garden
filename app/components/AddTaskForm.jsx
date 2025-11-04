@@ -1,6 +1,7 @@
 import styles from "./addTaskForm.module.css";
 import { saveDebtTask, saveLearningTask } from "@/app/services/tasks.server.js";
 import { useRouter } from "next/navigation";
+import { MdClose } from "react-icons/md";
 
 const AddTaskForm = ({ close, type, userId, update }) => {
   const router = useRouter();
@@ -22,9 +23,7 @@ const AddTaskForm = ({ close, type, userId, update }) => {
   return (
     <div className={styles.blurBg}>
       <div className={styles.card}>
-        <span onClick={close} className={styles.close}>
-          X
-        </span>
+        <MdClose onClick={close} className={styles.close} />
         <form className={styles.form} action={handleSave}>
           <div className={styles.formRow}>
             <input

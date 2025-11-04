@@ -18,3 +18,9 @@ export async function saveLearningTask(formData) {
   const task = new LearningTask(title, description, userId);
   await task.save();
 }
+
+export async function updateIsCompleted(type, id, wasPrevCompleted) {
+  type === "learning"
+    ? await LearningTask.setIsCompleted(id, wasPrevCompleted)
+    : await DebtTask.setIsCompleted(id, wasPrevCompleted);
+}
