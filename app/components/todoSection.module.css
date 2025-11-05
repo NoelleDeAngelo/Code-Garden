@@ -30,3 +30,11 @@
   align-self: center;
   cursor: pointer;
 }
+
+@media (max-width: 1200px) {
+  .card{
+    width: 55vw;
+    margin: auto;
+    min-width: 350px;
+  }
+}
