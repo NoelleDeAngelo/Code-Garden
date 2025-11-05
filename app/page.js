@@ -3,9 +3,10 @@ import styles from "./page.module.css";
 import SignOut from "@/app/components/SignOut"
 import TodoSection from "@/app/components/TodoSection";
 import Garden from "@/app/components/Garden";
+import ReportBtn from "@/app/components/ReportBtn"
 import { redirect } from "next/navigation";
 import { auth } from "@/lib/auth";
-import { db }  from "@/lib/db";
+import {getUserWithTasks} from '@/lib/user'
 
 
 
@@ -14,10 +15,7 @@ const Home = async () => {
   const session = await auth();
   if (!session) redirect("/signin")
 
-  const user = await db.user.findFirst({
-    where: { email: session.user.email },
-    include: { learningTask: true, debtTask: true },
-  });
+  const user = await getUserWithTasks(session.user.email)
   var tasks={learning:[], debt:[]}
   user.learningTask ? tasks.learning = user.learningTask : null
   user.debtTask ? tasks.debt=user.debtTask : null
@@ -30,7 +28,11 @@ const Home = async () => {
           <h1 className={styles.title}>Code Garden</h1>
           <p>Hello {session.user?.name}</p>
         </div>
+        <div>
+        <ReportBtn/>
         <SignOut />
+        </div>
+
       </header>
       <main className={styles.main}>
         <TodoSection tasks={tasks} userId={user.id} />
