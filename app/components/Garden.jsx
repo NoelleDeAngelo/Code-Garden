@@ -1,7 +1,8 @@
 import styles from "./garden.module.css";
 import Image from 'next/image'
 
-const Garden=({tasks})=>{
+const Garden = ({ tasks }) => {
+
   return (
     <div className={styles.card}>
       <div className={styles.garden}>
@@ -13,34 +14,26 @@ const Garden=({tasks})=>{
         <div className={styles.dirtSection}>
           {tasks.debt.map((todo) => {
             if (!todo.isCompleted) {
-              let y = Math.random() * (55 + 40) - 40;
-              y = y + "%";
-              let x = Math.random() * (89 + 3) - 3;
-              x = x + "%";
               return (
                 <Image
                   key={todo.id}
-                  src={require("../../public/PurpleWeed.png")}
-                  alt="A red poppy"
+                  src={require(`../../public/${todo.iconName}`)}
+                  alt="A drawing of a weed"
                   className={styles.plant}
-                  style={{ top: y, left: x }}
+                  style={{ top: todo.iconYLoc, left: todo.iconXLoc }}
                 />
               );
             }
           })}
           {tasks.learning.map((todo) => {
             if (todo.isCompleted) {
-              let y = Math.random() * (55 +40) -40;
-              y = y + "%";
-              let x = Math.random() * (89 + 3) - 3;
-              x = x + "%";
               return (
                 <Image
                   key={todo.id}
-                  src={require("../../public/RedFlower.png")}
-                  alt="A red poppy"
+                  src={require(`../../public/${todo.iconName}`)}
+                  alt="A drawing of a flower"
                   className={styles.plant}
-                  style={{ top: y, left: x }}
+                  style={{ top: todo.iconYLoc, left: todo.iconXLoc }}
                 />
               );
             }

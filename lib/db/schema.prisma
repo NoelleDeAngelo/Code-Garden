@@ -23,6 +23,9 @@ model debtTask{
   isCompleted Boolean @default(false)
   createdAt DateTime @default(now())
   completedAt DateTime?
+  iconName String
+  iconXLoc String
+  iconYLoc String
   userId String
   user user @relation(fields: [userId], references: [id])
 }
@@ -34,6 +37,9 @@ model learningTask{
   isCompleted Boolean @default(false)
   createdAt DateTime @default(now())
   completedAt DateTime?
+  iconName String
+  iconXLoc String
+  iconYLoc String
   userId String
   user user @relation(fields: [userId], references: [id])
 }
