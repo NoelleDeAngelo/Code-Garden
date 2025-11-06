@@ -14,10 +14,10 @@ export default async function ReportPage() {
   user.learningTask ? (tasks.learning = user.learningTask) : null;
   user.debtTask ? (tasks.debt = user.debtTask) : null;
   return (
-    <div>
-      <header>
-        <h1>Report Page</h1>
-        <Link href="/register">Home</Link>
+    <div className={styles.page}>
+      <header className={styles.header}>
+        <h1>Task Report</h1>
+        <Link className={styles.button } href="/register">Home</Link>
       </header>
       <Report tasks={tasks} />
     </div>

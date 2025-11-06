@@ -29,6 +29,10 @@
     flex-direction: column-reverse;
     gap:25px;
   }
+
+  .heading p{
+    justify-self: center;
+  }
 }
 
 

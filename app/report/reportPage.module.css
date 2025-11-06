@@ -1,0 +1,26 @@
+.page{
+  display: flex;
+  flex-direction: column;
+  min-height: 100Vh;
+  padding:2vh 3vw;
+  background-color:var(--color-background);
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  width:100%;
+  justify-content: space-between;
+}
+
+.button{
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #F5EFE0;
+  background-color:#3E3E3E ;
+  text-align: center;
+  height: fit-content;
+}

@@ -1,0 +1,52 @@
+
+.reportContainer{
+  background-color: var(--color-foreground);
+  width: fit-content;
+  border-radius: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  color: black;
+  box-shadow:
+  0 0 0 1px rgba(224, 222, 216, 0.9),
+  0 2px 4px rgba(11, 49, 66, 0.05);
+  align-self: center;
+  margin-top: 15vh;
+}
+.filterContainer{
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.filter{
+  background-color: var(--color-form-input);
+  border-radius: 5px;
+  height: 30px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+  font-family: var(--font-body) , sans-serif;
+}
+
+.table{
+  font-size: 1.4rem;
+}
+
+.table td{
+  padding: 5px 10px;
+}
+
+@media (max-width: 600px) {
+
+  .table{
+    font-size: 1.2rem;
+  }
+}
+@media (max-width: 400px) {
+
+  .table{
+    font-size: 1rem;
+  }
+}
