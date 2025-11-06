@@ -25,6 +25,7 @@ const ToDoSection = ({ tasks, userId }) => {
         <div className={styles.headingContainer}>
           <h2>Tech Debt</h2>
           <MdAddCircleOutline
+            data-testid="addDebtBtn"
             className={styles.button}
             onClick={() => {
               setTaskType("debt");
@@ -34,7 +35,7 @@ const ToDoSection = ({ tasks, userId }) => {
         </div>
         <ul>
           {tasks.debt.map((todo) => {
-            return <Todo key={todo.id} task={todo} type='debt' />;
+            return <Todo key={todo.id} task={todo} type="debt" />;
           })}
         </ul>
       </section>
@@ -52,7 +53,7 @@ const ToDoSection = ({ tasks, userId }) => {
         </div>
         <ul>
           {tasks.learning.map((todo) => {
-            return <Todo key={todo.id} task={todo} type='learning'/>;
+            return <Todo key={todo.id} task={todo} type="learning" />;
           })}
         </ul>
       </section>

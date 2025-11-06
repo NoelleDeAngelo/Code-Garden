@@ -73,11 +73,11 @@ const Report = ({ tasks }) => {
   return (
     <section className={styles.reportContainer}>
       <div className={styles.filterContainer}>
-        <label htmlFor="createdDate">
+        <label htmlFor="status">
           {" "}
-          Completed:{" "}
+          Status:
           <select
-            id="createdDate"
+            id="status"
             className={styles.filter}
             name="status"
             onChange={handleStatusChange}
@@ -87,11 +87,11 @@ const Report = ({ tasks }) => {
             <option value="incomplete">Incomplete</option>
           </select>
         </label>
-        <label htmlFor="start">
+        <label htmlFor="createdDate">
           Date Created:{" "}
           <input
             className={styles.filter}
-            id="start"
+            id="createdDate"
             name="start"
             type="date"
             onChange={handleDateChange}
