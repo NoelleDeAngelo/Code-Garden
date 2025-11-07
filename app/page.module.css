@@ -23,6 +23,7 @@
   justify-content: space-between;
 }
 
+/* Media queries and flex layouts ensure the application displays correctly on a variety of screen sizes */
 
 @media (max-width: 1200px) {
   .main{

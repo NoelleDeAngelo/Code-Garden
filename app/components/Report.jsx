@@ -2,6 +2,8 @@
 import styles from "./report.module.css";
 import{useState} from 'react'
 
+//The report component generates a User Task Report that shows a list of the users tasks with the title of the task, the date the task was created, and if applicable the date the task was completed. The report has a search functionality that allows the user to display tasks by completed status and date created.
+
 const Report = ({ tasks }) => {
   const allTasks= [...tasks.debt, ...tasks.learning]
 
@@ -100,6 +102,7 @@ const Report = ({ tasks }) => {
       </div>
       {!showingTasks.length ? <p>No Tasks Selected</p> :
         <table className={styles.table}>
+          <caption hidden>User Task Report</caption>
           <thead>
             <tr>
               <th>Task</th>

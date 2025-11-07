@@ -5,6 +5,8 @@ import signUp from "@/lib/reg"
 import { auth, signIn } from "@/lib/auth";
 import FormError from "@/app/components/FormError";
 
+// The registration form includes validation to ensure all fields are filled out, that the email matches the expected format, and that confirm password matches password.
+
 export default async function Register({searchParams}) {
 
   const session = await auth();
@@ -31,7 +33,6 @@ export default async function Register({searchParams}) {
           }
           if (success) {
             await signIn("credentials", formData, { redirectTo: "/" });
-          } else {
           }
         }}
       >

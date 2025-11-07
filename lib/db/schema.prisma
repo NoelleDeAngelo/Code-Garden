@@ -16,6 +16,8 @@ model user {
   learningTask learningTask[]
 }
 
+// The tasks are stored in separate tables to keep the application scalable. This allows new task types or type specific fields to be easily added in the future.
+
 model debtTask{
   id Int @id @default(autoincrement())
   title String
