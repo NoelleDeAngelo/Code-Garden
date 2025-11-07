@@ -1,0 +1,20 @@
+@keyframes fadeInOut {
+  from{
+    opacity: 0;
+  }
+  10%{
+    opacity: 1;
+  }
+  90%{
+    opacity: 1;
+  }
+  to{
+    opacity: 0;
+    display: none;
+  }
+}
+
+.message {
+  animation: fadeInOut 4.5s linear forwards;
+  color:red
+}

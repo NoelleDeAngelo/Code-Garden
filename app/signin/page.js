@@ -3,10 +3,14 @@ import Link from "next/link";
 import { auth, signIn } from "@/lib/auth";
 import { redirect } from "next/navigation";
 import { isRedirectError } from "next/dist/client/components/redirect-error";
+import FormError from '@/app/components/FormError'
 
-const SignIn = async () => {
+const SignIn = async ({searchParams}) => {
   const session = await auth();
   if (session) redirect("/");
+
+  const params = await searchParams;
+  const errorMessage = params?.error === "invalid" ? "Invalid Credentials" : null;
 
   return (
     <div className={styles.pageContainer}>
@@ -21,8 +25,7 @@ const SignIn = async () => {
             if (isRedirectError(error)) {
               throw error;
             } else {
-              //todo:handle error on client
-              throw new Error('Invalid Credentials')
+              redirect("/signin?error=invalid");
             }
           }
         }}
@@ -38,6 +41,7 @@ const SignIn = async () => {
         <button type="submit" className={styles.button}>
           Sign In
         </button>
+        {errorMessage && <FormError message={ errorMessage} />}
         <span className={styles.signup}>
           Need an account?{" "}
           <Link className={styles.signupLink} href="/register">

@@ -3,11 +3,16 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import signUp from "@/lib/reg"
 import { auth, signIn } from "@/lib/auth";
+import FormError from "@/app/components/FormError";
 
-export default async function Register() {
+export default async function Register({searchParams}) {
 
   const session = await auth();
   if (session) redirect("/");
+
+
+  const params = await searchParams;
+  const errorMessage = params?.error === "mismatch" ? "Passwords must match" : null;
 
 
   return (
@@ -22,7 +27,7 @@ export default async function Register() {
             const res = await signUp(formData);
             success = res.success;
           } else {
-            throw new Error('password and confirm password must match')
+            redirect("/register?error=mismatch");
           }
           if (success) {
             await signIn("credentials", formData, { redirectTo: "/" });
@@ -69,6 +74,7 @@ export default async function Register() {
         <button type="submit" className={styles.button}>
           Register
         </button>
+        {errorMessage && <FormError message={errorMessage} />}
         <span className={styles.signin}>
           Already have an account?{" "}
           <Link className={styles.signinLink} href="/signin">
