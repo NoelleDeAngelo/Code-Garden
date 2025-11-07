@@ -10,7 +10,8 @@
     "db:migrate": "npx prisma migrate dev",
     "db:studio": "npx prisma studio",
     "db:reset": "prisma migrate reset && prisma migrate dev",
-    "test": "jest"
+    "test": "jest",
+    "postinstall": "prisma generate --schema lib/db/schema.prisma"
   },
   "prisma": {
     "schema": "lib/db/schema.prisma"
