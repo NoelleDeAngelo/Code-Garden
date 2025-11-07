@@ -22,12 +22,11 @@ export default async function Register() {
             const res = await signUp(formData);
             success = res.success;
           } else {
-            //todo:handle password mismatch on client
+            throw new Error('password and confirm password must match')
           }
           if (success) {
             await signIn("credentials", formData, { redirectTo: "/" });
           } else {
-            //todo:handle signup error on client
           }
         }}
       >
