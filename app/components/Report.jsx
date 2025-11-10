@@ -45,7 +45,7 @@ const Report = ({ tasks }) => {
 
   function getDateFilteredList() {
     if (datePicked) {
-          setShowingTasks((prev) => {
+      setShowingTasks((prev) => {
       return prev.filter((task) => {
         return task.createdAt.toISOString().slice(0, 10) === datePicked;
       });
@@ -113,7 +113,7 @@ const Report = ({ tasks }) => {
           <tbody>
             {showingTasks.map((task) => {
               return (
-                <tr key={task.id}>
+                <tr key={task.id+task.title}>
                   <td>{task.title}</td>
                   <td>{task.createdAt.toDateString()}</td>
                   <td>

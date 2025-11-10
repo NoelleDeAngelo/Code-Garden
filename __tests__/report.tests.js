@@ -53,3 +53,17 @@ test("selecting incomplete status only shows tasks marked incomplete", () => {
   expect(screen.queryByText("task1")).not.toBeInTheDocument();
   expect(screen.queryByText("task3")).not.toBeInTheDocument();
 });
+
+test("selecting incomplete status after complete status only shows tasks marked incomplete", () => {
+  render(<Report tasks={mocTasks} />);
+  fireEvent.change(screen.getByRole("combobox", { name: "Status:" }), {
+    target: { value: "complete" },
+  });
+    fireEvent.change(screen.getByRole("combobox", { name: "Status:" }), {
+      target: { value: "incomplete" },
+    });
+
+  expect(screen.getByText("task2")).toBeInTheDocument();
+  expect(screen.queryByText("task1")).not.toBeInTheDocument();
+  expect(screen.queryByText("task3")).not.toBeInTheDocument();
+});
