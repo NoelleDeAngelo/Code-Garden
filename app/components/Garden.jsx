@@ -7,8 +7,10 @@ const Garden = ({ tasks }) => {
     <div className={styles.card}>
       <div className={styles.garden}>
         <Image
-          src={require("../../public/GardenBG.png")}
+          src={"/GardenBG.png"}
           alt="Drawing of an empty garden plot"
+          width={2000}
+          height={2000}
           className={styles.backgroundImg}
         />
         <div className={styles.dirtSection}>
@@ -17,9 +19,11 @@ const Garden = ({ tasks }) => {
               return (
                 <Image
                   key={todo.id}
-                  src={require(`../../public/${todo.iconName}`)}
+                  src={`/${todo.iconName}`}
                   alt="A drawing of a weed"
                   className={styles.plant}
+                  width={200}
+                  height={200}
                   style={{ top: todo.iconYLoc, left: todo.iconXLoc }}
                 />
               );
@@ -30,9 +34,11 @@ const Garden = ({ tasks }) => {
               return (
                 <Image
                   key={todo.id}
-                  src={require(`../../public/${todo.iconName}`)}
+                  src={`/${todo.iconName}`}
                   alt="A drawing of a flower"
                   className={styles.plant}
+                  width={200}
+                  height={200}
                   style={{ top: todo.iconYLoc, left: todo.iconXLoc }}
                 />
               );
